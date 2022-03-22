@@ -14,7 +14,6 @@ SECRET_KEY = env(
 ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
 
 
-
 # CACHES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#caches
@@ -32,7 +31,6 @@ CACHES = {
 EMAIL_BACKEND = env(
     "DJANGO_EMAIL_BACKEND", default="django.core.mail.backends.console.EmailBackend"
 )
-
 
 
 # django-debug-toolbar
@@ -56,7 +54,6 @@ if env("USE_DOCKER") == "yes":
 
     hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
     INTERNAL_IPS += [".".join(ip.split(".")[:-1] + ["1"]) for ip in ips]
-
 
 
 # django-extensions
