@@ -16,7 +16,7 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
 
     # Your stuff: custom urls includes go here
-    path("things/", include("project.things.urls", namespace="users")),
+    # path("things/", include("project.things.urls", namespace="users")),
 
 
 
