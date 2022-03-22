@@ -41,8 +41,10 @@ django-coverage-plugin = "==2.0.2"
 pytest-django = "==4.5.2"
 Werkzeug = {version = "==2.0.3", extras = ["watchdog"]}
 Sphinx = "==4.4.0"
+autopep8 = "*"
 
 [dev-packages]
+autopep8 = "*"
 
 [requires]
 python_version = "3.8"
