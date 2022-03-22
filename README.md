@@ -1,16 +1,43 @@
-# django-portfolio
+# Portfolio
 
-[(DJANGO)](https://github.com/django/django)
+## User/Auth
 
-## Django
+Users are set inside the project directory this allows the admin to have full scope on all the users passing in and out and also allowing access to the users to other minor microservice apps. This is can be useful when using the directory to initialize the project to become the main router for all the user pages. This then can be used for user specific pages and also allow microservices to call the user base.
 
-### User/Auth
+```bash
+.
+├── users
+│   ├── __pycache__
+│   ├── adapters.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── context_processors.py
+│   ├── forms.py
+│   ├── models.py
+│   ├── urls.py
+│   ├── views.py
+│   │   
+│   ├── migrations
+│   │   └── ...
+│   ├── api
+│   │   ├── serializers.py
+│   │   └── views.py
+│   ├── tests
+│   │   └── ...
+└── utils
 
-### Products
 
-### APIs
+```
 
-### Structure
+## Products
+
+This is going to be built as a microservice
+
+## APIs
+
+Soon to be information on Serializing
+
+## Structure
 
 I modeled the tree so that way I can have more control and organization over the whole structure itself. I opted to have all my different Dockerfiles for Django in the the compose folder. This allows me to manage each docker file to build out my processes to be more regulated and easily found in one section. Though the tree may look imtimidating at first it is not at all with a simple explanation.
 
@@ -38,6 +65,8 @@ if READ_DOT_ENV_FILE:
         ├── production.py
         └── test.py
 ```
+
+## Full Tree Structure
 
 ```bash
 .
@@ -88,3 +117,7 @@ if READ_DOT_ENV_FILE:
     └── requirements
 
 ```
+
+## Resources
+
+[Django documentation](https://docs.djangoproject.com/en/4.0/#the-model-layer)
