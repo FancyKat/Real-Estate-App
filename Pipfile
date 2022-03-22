@@ -4,7 +4,9 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-cookiecutter = ">=1.7.0"
+django = "*"
+psycopg2 = "*"
+django-environ = "*"
 
 [dev-packages]
 
