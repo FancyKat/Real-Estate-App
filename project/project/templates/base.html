@@ -1,5 +1,6 @@
-{% load static i18n %}<!DOCTYPE html>
-{% get_current_language as LANGUAGE_CODE %}
+{% load static i18n %}
+
+<!DOCTYPE html> {% get_current_language as LANGUAGE_CODE %}
 <html lang="{{ LANGUAGE_CODE }}">
   <head>
     <meta charset="utf-8" />
@@ -24,11 +25,11 @@
 
     <!-- This file stores project-specific CSS -->
     <link href="{% static 'css/project.css' %}" rel="stylesheet" />
+
     {% endblock %}
     <!-- Le javascript
     ================================================== -->
-    {# Placed at the top of the document so pages load faster with defer #} 
-    {% block javascript %}
+    {# Placed at the top of the document so pages load faster with defer #} {% block javascript %}
 
     <!-- Bootstrap JS -->
     <script
@@ -37,6 +38,14 @@
       integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
+    ></script>
+  
+    <!-- Masonary -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
+      integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D"
+      crossorigin="anonymous"
+      async
     ></script>
 
     <!-- Your stuff: Third-party javascript libraries go here -->
@@ -67,47 +76,38 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="{% url 'home' %}"
-                  >Home <span class="visually-hidden">(current)</span></a
-                >
+                <a class="nav-link" href="{% url 'home' %}">Home <span class="visually-hidden">(current)</span></a>
               </li>
+              <!-- /about -->
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'about' %}">About</a>
               </li>
               {% if request.user.is_authenticated %}
               <li class="nav-item">
                 {# URL provided by django-allauth/account/urls.py #}
-                <a
-                  class="nav-link"
-                  href="{% url 'users:detail' request.user.username  %}"
+                <a class="nav-link" href="{% url 'users:detail' request.user.username  %}"
                   >{% translate "My Profile" %}</a
                 >
               </li>
+
+              <!-- /signout -->
               <li class="nav-item">
                 {# URL provided by django-allauth/account/urls.py #}
-                <a class="nav-link" href="{% url 'account_logout' %}"
-                  >{% translate "Sign Out" %}</a
-                >
+                <a class="nav-link" href="{% url 'account_logout' %}">{% translate "Sign Out" %}</a>
               </li>
+
+              <!-- /signup -->
               {% else %} {% if ACCOUNT_ALLOW_REGISTRATION %}
               <li class="nav-item">
                 {# URL provided by django-allauth/account/urls.py #}
-                <a
-                  id="sign-up-link"
-                  class="nav-link"
-                  href="{% url 'account_signup' %}"
-                  >{% translate "Sign Up" %}</a
-                >
+                <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% translate "Sign Up" %}</a>
               </li>
               {% endif %}
+
+              <!-- /login -->
               <li class="nav-item">
                 {# URL provided by django-allauth/account/urls.py #}
-                <a
-                  id="log-in-link"
-                  class="nav-link"
-                  href="{% url 'account_login' %}"
-                  >{% translate "Sign In" %}</a
-                >
+                <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% translate "Sign In" %}</a>
               </li>
               {% endif %}
             </ul>
@@ -116,37 +116,29 @@
       </nav>
     </div>
 
+    <!-- /container -->
+
     <div class="container">
       {% if messages %} {% for message in messages %}
-      <div
-        class="alert alert-dismissible {% if message.tags %}alert-{{ message.tags }}{% endif %}"
-      >
+      <div class="alert alert-dismissible {% if message.tags %}alert-{{ message.tags }}{% endif %}">
         {{ message }}
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="alert"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
       {% endfor %} {% endif %} {% block content %}
-      <p>Use this document as a way to quick start any new project.</p>
+
+      <h1>Place Holder</h1>
+
       {% endblock content %}
     </div>
     <!-- /container -->
 
-    {% block modal %}
-    {% endblock modal %} 
-    {% block inline_javascript %} 
-    {% comment %} 
-    Script tags with only code, no src (defer by default). To run
-    with a "defer" so that you run inline code:
+    {% block modal %} {% endblock modal %} {% block inline_javascript %} {% comment %} Script tags with only code, no
+    src (defer by default). To run with a "defer" so that you run inline code:
     <script>
-      window.addEventListener("DOMContentLoaded", () => {
+      window.addEventListener('DOMContentLoaded', () => {
         /* Run whatever you want */
       });
     </script>
-    {% endcomment %} 
-    {% endblock inline_javascript %}
+    {% endcomment %} {% endblock inline_javascript %}
   </body>
 </html>
