@@ -37,6 +37,8 @@ This is going to be built as a microservice
 
 Soon to be information on Serializing
 
+[Django REST framework](https://www.django-rest-framework.org/)
+
 ## Structure
 
 I modeled the tree so that way I can have more control and organization over the whole structure itself. I opted to have all my different Dockerfiles for Django in the the compose folder. This allows me to manage each docker file to build out my processes to be more regulated and easily found in one section. Though the tree may look imtimidating at first it is not at all with a simple explanation.
@@ -120,4 +122,8 @@ if READ_DOT_ENV_FILE:
 
 ## Resources
 
-[Django documentation](https://docs.djangoproject.com/en/4.0/#the-model-layer)
+- [Django documentation](https://docs.djangoproject.com/en/4.0/#the-model-layer)
+- [Cookiecutter Django 2022.12.1 documentation](https://cookiecutter-django.readthedocs.io/en/latest/)
+- [Django REST framework](https://www.django-rest-framework.org/)
+- [Bootstrap](https://getbootstrap.com/)
+- [Django Debug Toolbar](https://django-debug-toolbar.readthedocs.io/en/1.8/)
