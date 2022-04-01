@@ -1,0 +1,90 @@
+.button-6 {
+  align-items: flex-end;
+  background: linear-gradient(106.7deg, #fc0441 0%, #f62da8 100%);
+  border-radius: 24px;
+  display: flex;
+  height: 48px;
+  justify-content: flex-end;
+  margin-right: 10.0px;
+  margin-top: 36px;
+  min-width: 160px;
+  padding: 8px 36px;
+}
+
+.label {
+  letter-spacing: 0;
+  line-height: 16px;
+  min-height: 24px;
+  min-width: 86px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.button-6.button-2 {
+  align-items: flex-end;
+  align-self: center;
+  background: linear-gradient(102.99deg, #fc0441 0%, #f62da8 100%);
+  border-radius: 24px;
+  display: flex;
+  height: 48px;
+  justify-content: flex-end;
+  margin-right: 0;
+  margin-top: 32px;
+  min-width: 208px;
+  padding: 8px 72px;
+}
+
+.button-6.button-2 .label,
+.button-6.button-3 .label {
+  min-width: 62px;
+}
+
+.button-6.button-3 {
+  align-items: flex-end;
+  background: linear-gradient(108.43deg, #fc0441 0%, #f62da8 100%);
+  border-radius: 24px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 25px;
+  margin-right: 143px;
+  margin-top: 27px;
+  min-width: 144px;
+  padding: 8px 40px;
+}
+
+.button-6.button-4 {
+  align-items: flex-end;
+  background: linear-gradient(108.43deg, #fc0441 0%, #f62da8 100%);
+  border-radius: 24px;
+  display: flex;
+  height: 48px;
+  justify-content: flex-end;
+  margin-top: 31px;
+  min-width: 144px;
+  padding: 8px 28px;
+}
+
+.button-6.button-1 {
+  background: linear-gradient(108.43deg, #fc0441 0%, #f62da8 100%);
+  margin-right: 2.0px;
+  margin-top: 51px;
+  min-width: 144px;
+  padding: 8px 28px;
+}
+
+.button-6.button-5 {
+  align-items: flex-end;
+  background: linear-gradient(108.43deg, #fc0441 0%, #f62da8 100%);
+  border-radius: 24px;
+  display: flex;
+  height: 48px;
+  justify-content: flex-end;
+  margin-left: 16px;
+  min-width: 144px;
+  padding: 8px 32px;
+}
+
+.button-6.button-5 .label {
+  min-width: 78px;
+}
+
