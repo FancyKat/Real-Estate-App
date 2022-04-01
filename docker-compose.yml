@@ -3,13 +3,13 @@ version: '3'
 services:
   backend:
     build:
-      context: ./django
+      context: ./backend/django
     command: gunicorn core.wsgi --bind 0.0.0.0:8000
     ports:
       - "8000:8000"
   frontend:
     build:
-      context: ./react/blogapi
+      context: ./frontend/react
     volumes:
       - react_build:/react/build
   nginx:
