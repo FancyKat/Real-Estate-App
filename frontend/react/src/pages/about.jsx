@@ -4,7 +4,6 @@ import { Component } from 'react';
 import CardList from '../components/card-list/card-list.component';
 import SearchBox from '../components/search-box/search-box.component';
 import Hero from '../components/Hero';
-import '../media/styles/about.css';
 
 
 class About extends Component {

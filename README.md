@@ -9,8 +9,6 @@ Users are set inside the project directory this allows the admin to have full sc
 
 ```bash
 .
-
-
 ├── users
 │   ├── __pycache__
 │   ├── adapters.py
@@ -22,17 +20,7 @@ Users are set inside the project directory this allows the admin to have full sc
 │   ├── urls.py
 │   ├── views.py
 │   │   
-
-
-
-
-
-
-
-
-
-
-git   ├── migrations
+git ├── migrations
 │   │   └── ...
 │   ├── api
 │   │   ├── serializers.py

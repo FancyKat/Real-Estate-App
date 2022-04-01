@@ -1,60 +1,42 @@
-import { Component } from 'react';
-
-import CardList from '../components/card-list/card-list.component';
-import SearchBox from '../components/search-box/search-box.component';
-
-import React from 'react';
+import React, { Component } from 'react';
+import Card from '../components/Card';
+import Hero from '../components/Hero';
 
 class Blogs extends Component {
-
-  constructor() {
-    super();
-
+  constructor(props) {
+    super(props);
     this.state = {
+      posts: [],
       avatars: [],
-      searchField: ''    
     };
   }
 
   componentDidMount() {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then((response) => response.json())
-      .then((users) => 
-        this.setState(
-          () => { 
-            return {avatars: users}
-          }
-        )
+      .then((users) =>
+        this.setState(() => {
+          return { avatars: users };
+        })
       );
   }
 
-  onSearchChange = (event) => {
-    const searchField = event.target.value.toLowerCase();
-    this.setState(() => {
-      return { searchField };
-    });
-  };
-
   render() {
     // destructure from state and cast to variables so that 'this' keyword can be removed from following code
-    const { avatars, searchField } = this.state;
-    const { onSearchChange } = this;
+    const { avatars } = this.state;
     const filteredAvatarNames = avatars.filter((avatarName) => {
-      return avatarName.name.toLowerCase().includes(searchField);
+      return avatarName.name.toLowerCase();
     });
 
-
     return (
-      <div className="Blogs">
-        <SearchBox 
-          className='search-box' 
-          onChangeHandler={onSearchChange} 
-          placeholder='Find Friends' 
-        />
-        <CardList avatars={filteredAvatarNames} />
-      </div>
+      <>
+        <Hero />
+        <div className="Contact">
+       <Card avatars={filteredAvatarNames} />
+        </div>
+      </>
     );
   }
-};
+}
 
 export default Blogs;
