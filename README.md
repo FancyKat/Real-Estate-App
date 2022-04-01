@@ -23,6 +23,15 @@ Users are set inside the project directory this allows the admin to have full sc
 │   ├── views.py
 │   │   
 
+
+
+
+
+
+
+
+
+
 git   ├── migrations
 │   │   └── ...
 │   ├── api
