@@ -12,8 +12,12 @@ class CardList extends Component {
         {avatars.map(avatar => (
           //Use key id to prevent react warning that each child should have a unique key prop
           <h1 key={avatar.id}> {avatar.name} {avatar.email} </h1>
+
         ))}
+
       </div>
+
+      
     )
   }
 }

@@ -1,8 +1,8 @@
 import React from "react";
 import './Slider.css';
 import movie1 from '../../media/movie1.jpg';
-import movie2 from '../../media/movie1.jpg';
-import movie3 from '../../media/movie1.jpg';
+import movie2 from '../../media/movie2.jpg';
+import movie3 from '../../media/movie3.jpg';
 
 const slidesInfo = [
     {
@@ -34,3 +34,5 @@ const slides = slidesInfo.map(slide => (
 ));
 
 export default slides;
+
+
