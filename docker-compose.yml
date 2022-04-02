@@ -1,0 +1,56 @@
+version: '3'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: ./backend/django/compose/django/Dockerfile
+    image: backend_django
+    container_name: backend_django
+    platform: linux/x86_64
+    depends_on:
+      - postgres
+    volumes:
+      - .:/code
+    env_file:
+      - ./backend/django/.envs/.django
+      - ./backend/django/.envs/.postgres
+    ports:
+      - "8000:8000"
+    command: gunicorn core.wsgi --bind 0.0.0.0:8000
+
+  postgres:
+    build:
+      context: .
+      dockerfile: ./backend/django/compose/postgres/Dockerfile
+    image: postgres
+    container_name: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data:Z
+      - postgres_data_backups:/backups:z
+    env_file:
+      - ./backend/django/.envs/.postgres
+
+  frontend:
+    build:
+      context: .
+      dockerfile: ./frontend/react/Dockerfile
+    container_name: frontend_react
+    volumes:
+      - react_build:/frontend/react/build
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - 80:8080
+    volumes:
+      - ./.nginx/nginx-setup.conf:/etc/nginx/conf.d/default.conf:ro
+      - react_build:/var/www/react
+    depends_on:
+      - backend
+      - frontend
+
+volumes:
+  react_build:  
+  postgres_data: {}
+  postgres_data_backups: {}

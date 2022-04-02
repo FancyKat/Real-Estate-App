@@ -4,6 +4,9 @@
 
 Users are set inside the project directory this allows the admin to have full scope on all the users passing in and out and also allowing access to the users to other minor microservice apps. This is can be useful when using the directory to initialize the project to become the main router for all the user pages. This then can be used for user specific pages and also allow microservices to call the user base.
 
+
+
+
 ```bash
 .
 ├── users
@@ -17,7 +20,7 @@ Users are set inside the project directory this allows the admin to have full sc
 │   ├── urls.py
 │   ├── views.py
 │   │   
-│   ├── migrations
+git ├── migrations
 │   │   └── ...
 │   ├── api
 │   │   ├── serializers.py
