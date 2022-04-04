@@ -1,0 +1,29 @@
+.featured-content {
+    align-items: center;
+    background-color: var(--shark);
+    display: flex;
+    flex-direction: column;
+    min-height: 768px;
+    padding: 75px 0;
+    position: relative;
+    width: 1366px;
+  }
+  
+  .card-title {
+    height: 45px;
+    letter-spacing: -0.16px;
+    line-height: 42px;
+    margin-right: 2.0px;
+    text-align: center;
+    white-space: nowrap;
+    width: 346px;
+  }
+  
+  .line {
+    height: 2px;
+    margin-left: 9.0px;
+    margin-top: 18px;
+    object-fit: cover;
+    width: 80px;
+  }
+  
