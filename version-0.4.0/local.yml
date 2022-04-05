@@ -1,0 +1,86 @@
+version: '3'
+
+volumes:
+  backend_local_postgres_data: {}
+  backend_local_postgres_data_backups: {}
+
+services:
+  django: &django
+    build:
+      context: ./backend
+      dockerfile: ./compose/local/django/Dockerfile
+    image: backend_local_django
+    container_name: backend_local_django
+    platform: linux/x86_64
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - .:/app:z
+    env_file:
+      - ./backend/.envs/.local/.django
+      - ./backend/.envs/.local/.postgres
+    ports:
+      - "8000:8000"
+    command: /start
+
+  postgres:
+    build:
+      context: ./backend
+      dockerfile: ./compose/production/postgres/Dockerfile
+    image: django_backend_postgres
+    container_name: django_backend_postgres
+    volumes:
+      - backend_local_postgres_data:/var/lib/postgresql/data:Z
+      - backend_local_postgres_data_backups:/backups:z
+    env_file:
+      - ./backend/.envs/.local/.postgres
+
+  # pgadmin:
+  #   container_name: django_backend_pgadmin
+  #   image: dpage/pgadmin4:latest
+  #   env_file:
+  #     - ./backend/.envs/.local/.postgres
+  #   ports:
+  #     - "5050:80"
+  #   restart: always
+
+  redis:
+    image: redis:6
+    container_name: backend_local_redis
+
+  celeryworker:
+    <<: *django
+    image: backend_local_celeryworker
+    container_name: backend_local_celeryworker
+    depends_on:
+      - redis
+      - postgres
+    ports: []
+    command: /start-celeryworker
+
+  celerybeat:
+    <<: *django
+    image: backend_local_celerybeat
+    container_name: backend_local_celerybeat
+    depends_on:
+      - redis
+      - postgres
+    ports: []
+    command: /start-celerybeat
+
+  flower:
+    <<: *django
+    image: backend_local_flower
+    container_name: backend_local_flower
+    ports:
+      - "5555:5555"
+    command: /start-flower
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    container_name: frontend_portfolio
+    ports:
+      - "80:80"
