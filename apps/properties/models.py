@@ -60,20 +60,10 @@ class Property(TimeStampedUUIDModel):
         blank_label="(select country)",
     )
     city = models.CharField(verbose_name=_("City"), max_length=180, default="Clovis")
-    postal_code = models.CharField(
-        verbose_name=_("Postal Code"), max_length=100, default="9319"
-    )
-    street_address = models.CharField(
-        verbose_name=_("Street Address"), max_length=150, default="Mecca Avenue"
-    )
-    property_number = models.IntegerField(
-        verbose_name=_("Property Number"),
-        validators=[MinValueValidator(1)],
-        default=112,
-    )
-    price = models.DecimalField(
-        verbose_name=_("Price"), max_digits=8, decimal_places=2, default=0.0
-    )
+    postal_code = models.CharField(verbose_name=_("Postal Code"), max_length=100, default="93619")
+    street_address = models.CharField(verbose_name=_("Street Address"), max_length=150, default="Mecca Avenue")
+    property_number = models.IntegerField(verbose_name=_("Property Number"), validators=[MinValueValidator(1)], default=112,)
+    price = models.DecimalField(verbose_name=_("Price"), max_digits=8, decimal_places=2, default=0.0)
     tax = models.DecimalField(
         verbose_name=_("Property Tax"),
         max_digits=6,
@@ -81,14 +71,10 @@ class Property(TimeStampedUUIDModel):
         default=0.15,
         help_text="15% property tax charged",
     )
-    plot_area = models.DecimalField(
-        verbose_name=_("Plot Area(ft^2)"), max_digits=8, decimal_places=2, default=0.0
-    )
+    plot_area = models.DecimalField(verbose_name=_("Plot Area(ft^2)"), max_digits=8, decimal_places=2, default=0.0)
     total_floors = models.IntegerField(verbose_name=_("Number of floors"), default=0)
     bedrooms = models.IntegerField(verbose_name=_("Bedrooms"), default=1)
-    bathrooms = models.DecimalField(
-        verbose_name=_("Bathrooms"), max_digits=4, decimal_places=2, default=1.0
-    )
+    bathrooms = models.DecimalField(verbose_name=_("Bathrooms"), max_digits=4, decimal_places=2, default=1.0)
     advert_type = models.CharField(
         verbose_name=_("Advert Type"),
         max_length=50,
@@ -126,9 +112,7 @@ class Property(TimeStampedUUIDModel):
         null=True,
         blank=True,
     )
-    published_status = models.BooleanField(
-        verbose_name=_("Published Status"), default=False
-    )
+    published_status = models.BooleanField(verbose_name=_("Published Status"), default=False)
     views = models.IntegerField(verbose_name=_("Total Views"), default=0)
 
     objects = models.Manager()
@@ -144,9 +128,7 @@ class Property(TimeStampedUUIDModel):
     def save(self, *args, **kwargs):
         self.title = str.title(self.title)
         self.description = str.capitalize(self.description)
-        self.ref_code = "".join(
-            random.choices(string.ascii_uppercase + string.digits, k=10)
-        )
+        self.ref_code = "".join(random.choices(string.ascii_uppercase + string.digits, k=10))
         super(Property, self).save(*args, **kwargs)
 
     @property
