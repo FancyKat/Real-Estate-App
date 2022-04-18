@@ -17,7 +17,7 @@ services:
         depends_on:
             - postgres-db
         networks:
-            - estate-react
+            - portfolio-react
 
     postgres-db:
         image: postgres:12.0-alpine
@@ -30,10 +30,10 @@ services:
             - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
             - POSTGRES_DB=${POSTGRES_DB}
         networks:
-            - estate-react
+            - portfolio-react
 
 networks:
-    estate-react:
+    portfolio-react:
         driver: bridge
 
 volumes:
