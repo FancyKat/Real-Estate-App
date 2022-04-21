@@ -1,132 +1,71 @@
-# Portfolio
+# django-server
 
-## User/Auth
+Behold My Awesome Project!
 
-Users are set inside the project directory this allows the admin to have full scope on all the users passing in and out and also allowing access to the users to other minor microservice apps. This is can be useful when using the directory to initialize the project to become the main router for all the user pages. This then can be used for user specific pages and also allow microservices to call the user base.
+[![Built with Cookiecutter Django](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter)](https://github.com/cookiecutter/cookiecutter-django/)
+[![Black code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
+License: MIT
 
+## Settings
 
+Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings.html).
 
-```bash
-.
-├── users
-│   ├── __pycache__
-│   ├── adapters.py
-│   ├── admin.py
-│   ├── apps.py
-│   ├── context_processors.py
-│   ├── forms.py
-│   ├── models.py
-│   ├── urls.py
-│   ├── views.py
-│   │   
-git ├── migrations
-│   │   └── ...
-│   ├── api
-│   │   ├── serializers.py
-│   │   └── views.py
-│   ├── tests
-│   │   └── ...
-└── utils
+## Basic Commands
 
+### Setting Up Your Users
 
+- To create a **normal user account**, just go to Sign Up and fill out the form. Once you submit it, you'll see a "Verify Your E-mail Address" page. Go to your console to see a simulated email verification message. Copy the link into your browser. Now the user's email should be verified and ready to go.
+
+- To create a **superuser account**, use this command:
+
+        python manage.py createsuperuser
+
+For convenience, you can keep your normal user logged in on Chrome and your superuser logged in on Firefox (or similar), so that you can see how the site behaves for both kinds of users.
+
+### Type checks
+
+Running type checks with mypy:
+
+    mypy django_server
+
+### Test coverage
+
+To run the tests, check your test coverage, and generate an HTML coverage report:
+
+    coverage run -m pytest
+    coverage html
+    open htmlcov/index.html
+
+#### Running tests with pytest
+
+    pytest
+
+### Live reloading and Sass CSS compilation
+
+Moved to [Live reloading and SASS compilation](https://cookiecutter-django.readthedocs.io/en/latest/developing-locally.html#sass-compilation-live-reloading).
+
+### Celery
+
+This app comes with Celery.
+
+To run a celery worker:
+
+``` bash
+cd django_server
+celery -A config.celery_app worker -l info
 ```
 
-## Products
+Please note: For Celery's import magic to work, it is important *where* the celery commands are run. If you are in the same folder with *manage.py*, you should be right.
 
-This is going to be built as a microservice
+## Deployment
 
-## APIs
+The following details how to deploy this application.
 
-Soon to be information on Serializing
+### Heroku
 
-[Django REST framework](https://www.django-rest-framework.org/)
+See detailed [cookiecutter-django Heroku documentation](http://cookiecutter-django.readthedocs.io/en/latest/deployment-on-heroku.html).
 
-## Structure
+### Docker
 
-I modeled the tree so that way I can have more control and organization over the whole structure itself. I opted to have all my different Dockerfiles for Django in the the compose folder. This allows me to manage each docker file to build out my processes to be more regulated and easily found in one section. Though the tree may look imtimidating at first it is not at all with a simple explanation.
-
-You `local.yml` allows you to build the file locally this give the flexibility to build a contatiner locally on docker or on a your own computer by changing the config file and editing the `base.py` this is seperate from the `local.py` but allows you to run it locally. Also changing the boolean of this block of code will change which envs are being used in a local environment instead of the docker container environment.
-
-```python
-READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=True)
-if READ_DOT_ENV_FILE:
-    # OS environment variables take precedence over variables from .env
-    env.read_env(str(ROOT_DIR / ".env"))
-```
-
-```bash
-.
-└── config
-    ├── __pycache__
-    └── settings
-        ├── __init__.py
-        ├── __pycache__
-        │   ├── __init__.cpython-38.pyc
-        │   ├── base.cpython-38.pyc
-        │   └── local.cpython-38.pyc
-        ├── base.py
-        ├── local.py
-        ├── production.py
-        └── test.py
-```
-
-## Full Tree Structure
-
-```bash
-.
-└── project
-    ├── calc
-    │   └── migrations
-    ├── compose
-    │   ├── local
-    │   │   └── django
-    │   └── production
-    │       ├── aws
-    │       │   └── maintenance
-    │       ├── django
-    │       ├── postgres
-    │       │   └── maintenance
-    │       │       └── _sourced
-    │       └── traefik
-    ├── config
-    │   ├── __pycache__
-    │   └── settings
-    │       └── __pycache__
-    ├── project
-    │   ├── __pycache__
-    │   ├── contrib
-    │   │   ├── __pycache__
-    │   │   └── sites
-    │   │       ├── __pycache__
-    │   │       └── migrations
-    │   │           └── __pycache__
-    │   ├── static
-    │   │   ├── css
-    │   │   ├── fonts
-    │   │   ├── images
-    │   │   │   └── favicons
-    │   │   └── js
-    │   ├── templates
-    │   │   ├── account
-    │   │   ├── pages
-    │   │   └── users
-    │   ├── users
-    │   │   ├── __pycache__
-    │   │   ├── api
-    │   │   │   └── __pycache__
-    │   │   ├── migrations
-    │   │   │   └── __pycache__
-    │   │   └── tests
-    │   └── utils
-    └── requirements
-
-```
-
-## Resources
-
-- [Django documentation](https://docs.djangoproject.com/en/4.0/#the-model-layer)
-- [Cookiecutter Django 2022.12.1 documentation](https://cookiecutter-django.readthedocs.io/en/latest/)
-- [Django REST framework](https://www.django-rest-framework.org/)
-- [Bootstrap](https://getbootstrap.com/)
-- [Django Debug Toolbar](https://django-debug-toolbar.readthedocs.io/en/1.8/)
+See detailed [cookiecutter-django Docker documentation](http://cookiecutter-django.readthedocs.io/en/latest/deployment-with-docker.html).
