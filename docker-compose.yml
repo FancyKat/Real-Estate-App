@@ -10,11 +10,24 @@ services:
             - .:/app
             - static_volume:/app/staticfiles
             - media_volume:/app/mediafiles
+        expose:
+            - "8000"
         env_file:
             - .env
         depends_on:
             - postgres-db
             - redis
+        networks:
+            - portfolio-react
+
+    client:
+        build:
+            context: ./client
+            dockerfile: ./docker/local/Dockerfile
+        restart: on-failure
+        volumes:
+            - ./client:/app
+            - /app/node_modules
         networks:
             - portfolio-react
 
@@ -32,7 +45,7 @@ services:
             - portfolio-react
 
     redis:
-        image: redis:6-alpine
+        image: redis:5-alpine
         networks:
             - portfolio-react
 
